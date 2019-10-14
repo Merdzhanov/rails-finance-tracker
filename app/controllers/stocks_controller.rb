@@ -10,13 +10,13 @@ class StocksController < ApplicationController
                 format.js { render partial: 'users/result' }
               end
           else
-            flash.now[:danger] = "You have entered an incorrect symbol"
+            flash.now[:error] = "You have entered an incorrect symbol"
             respond_to do |format|
                 format.js { render partial: 'users/result' }
               end
           end
         else
-            flash.now[:danger] = "You have entered an empty search string"
+            flash.now[:error] = "You have entered an empty search string"
             respond_to do |format|
                 format.js { render partial: 'users/result' }
               end
