@@ -1,0 +1,23 @@
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">FinanceTracker</a>
+  <% if current_user %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav col-md-6">
+      <%= link_to "My Portfolio", my_portfolio_path, class: "nav-item nav-link"%>
+      <%= link_to "My Profile", edit_registration_path(current_user), class: "nav-item nav-link"%>
+    </div>
+    <div class="navbar-right row col-md-4">
+      <div class="col-md-8 user-name text-right">
+        <i class="fa fa-user"></i>
+          <%= current_user.full_name.present? ? current_user.full_name : current_user.email %>
+      </div>
+      <div class="col-md-4 logout">
+          <%= link_to("logout", destroy_user_session_path, method: :delete, class: "btn btn-xs btn-danger") %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</nav>
